@@ -15,8 +15,8 @@ concurrency:
 env:
   DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  DIFY_WEB_IMAGE_NAME: ${{ vars.DOCKERHUB_WEB_DIFY || 'dihubcn/dify-web' }}
-  DIFY_API_IMAGE_NAME: ${{ vars.DOCKERHUB_API_DIFY || 'dihubcn/dify-api' }}
+  DIFY_WEB_IMAGE_NAME: ${{ vars.DIFY_WEB_IMAGE_NAME || 'dihubcn/dify-web' }}
+  DIFY_API_IMAGE_NAME: ${{ vars.DIFY_API_IMAGE_NAME || 'dihubcn/dify-api' }}
 
 jobs:
   build:
