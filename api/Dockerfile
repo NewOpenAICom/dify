@@ -51,8 +51,8 @@ WORKDIR /app/api
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends curl nodejs libgmp-dev libmpfr-dev libmpc-dev
     # if you located in China, you can use aliyun mirror to speed up
-RUN echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
-    # && echo "deb http://deb.debian.org/debian testing main" > /etc/apt/sources.list \
+# RUN echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
+RUN echo "deb http://deb.debian.org/debian testing main" > /etc/apt/sources.list
 RUN apt-get update
     # For Security
 RUN apt-get install -y --no-install-recommends expat=2.6.4-1 libldap2=2.6.9+dfsg-1 perl=5.40.0-8 libsqlite3-0=3.46.1-1 zlib1g=1:1.3.dfsg+really1.3.1-1+b1
