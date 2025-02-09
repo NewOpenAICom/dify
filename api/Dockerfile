@@ -48,20 +48,20 @@ ENV TZ=UTC
 
 WORKDIR /app/api
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl nodejs libgmp-dev libmpfr-dev libmpc-dev \
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends curl nodejs libgmp-dev libmpfr-dev libmpc-dev
     # if you located in China, you can use aliyun mirror to speed up
-    && echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list \
+RUN echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
     # && echo "deb http://deb.debian.org/debian testing main" > /etc/apt/sources.list \
-    && apt-get update \
+RUN apt-get update
     # For Security
-    && apt-get install -y --no-install-recommends expat=2.6.4-1 libldap2=2.6.9+dfsg-1 perl=5.40.0-8 libsqlite3-0=3.46.1-1 zlib1g=1:1.3.dfsg+really1.3.1-1+b1 \
+RUN apt-get install -y --no-install-recommends expat=2.6.4-1 libldap2=2.6.9+dfsg-1 perl=5.40.0-8 libsqlite3-0=3.46.1-1 zlib1g=1:1.3.dfsg+really1.3.1-1+b1
     # install a chinese font to support the use of tools like matplotlib
-    && apt-get install -y fonts-noto-cjk \
+RUN apt-get install -y fonts-noto-cjk
     # install libmagic to support the use of python-magic guess MIMETYPE
-    && apt-get install -y libmagic1 \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y libmagic1
+RUN apt-get autoremove -y
+RUN rm -rf /var/lib/apt/lists/*
 
 # Copy Python environment and packages
 ENV VIRTUAL_ENV=/app/api/.venv
