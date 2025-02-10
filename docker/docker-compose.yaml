@@ -416,7 +416,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: dihubcn/dify-api:1.0.0
+    image: dihubcn/dify-api:v1.0.0
     restart: always
     environment:
       # Use the shared environment variables.
@@ -438,7 +438,7 @@ services:
 
   # Frontend web application.
   web:
-    image: dihubcn/dify-web:1.0.0
+    image: dihubcn/dify-web:v1.0.0
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
