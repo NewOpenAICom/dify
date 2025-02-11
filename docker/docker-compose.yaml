@@ -412,6 +412,8 @@ services:
     networks:
       - ssrf_proxy_network
       - default
+    ports:
+      - "5001:5001"
 
   # worker service
   # The Celery worker for processing the queue.
@@ -435,10 +437,12 @@ services:
     networks:
       - ssrf_proxy_network
       - default
+    ports:
+      - "5002:5001"
 
   # Frontend web application.
   web:
-    image: dihubcn/dify-web:v1.0.1
+    image: dihubcn/dify-web:v1.0.4
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
@@ -449,6 +453,8 @@ services:
       CSP_WHITELIST: ${CSP_WHITELIST:-}
       TOP_K_MAX_VALUE: ${TOP_K_MAX_VALUE:-}
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: ${INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH:-}
+    ports:
+      - "3000:3000"
 
   # The postgres database.
   db:
@@ -472,6 +478,8 @@ services:
       interval: 1s
       timeout: 3s
       retries: 30
+    ports:
+      - "5432:5432"
 
   # The redis cache.
   redis:

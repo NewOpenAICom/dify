@@ -179,7 +179,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                         <ArrowUpRight className='hidden w-[14px] h-[14px] text-text-tertiary group-hover:flex' />
                       </Link>}
                     </Menu.Item>
-                    {
+                    {/* {
                       document?.body?.getAttribute('data-public-site-about') !== 'hide' && (
                         <Menu.Item>
                           {({ active }) => <div className={classNames(itemClassName, 'justify-between',
@@ -193,7 +193,7 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                           </div>}
                         </Menu.Item>
                       )
-                    }
+                    } */}
                   </div>
                   <Menu.Item>
                     {({ active }) => <div className='p-1' onClick={() => handleLogout()}>
