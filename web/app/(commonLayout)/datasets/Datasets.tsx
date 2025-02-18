@@ -61,7 +61,7 @@ const Datasets = ({
 
   useEffect(() => {
     loadingStateRef.current = isLoading
-    document.title = `${t('dataset.knowledge')} - AIPs`
+    document.title = `${t('dataset.knowledge')} - New OpenAI`
   }, [isLoading])
 
   useEffect(() => {

@@ -11,8 +11,8 @@ import AppNav from './app-nav'
 import DatasetNav from './dataset-nav'
 import EnvNav from './env-nav'
 import ExploreNav from './explore-nav'
+import ChatNav from './chat-nav'
 import ToolsNav from './tools-nav'
-import GithubStar from './github-star'
 import LicenseNav from './license-env'
 import { WorkspaceProvider } from '@/context/workspace-context'
 import AppContext, { useAppContext } from '@/context/app-context'
@@ -20,7 +20,6 @@ import LogoSite from '@/app/components/base/logo/logo-site'
 import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import { useProviderContext } from '@/context/provider-context'
 import { useModalContext } from '@/context/modal-context'
-import { LicenseStatus } from '@/types/feature'
 
 const navClassName = `
   flex items-center relative mr-0 sm:mr-3 px-3 h-8 rounded-xl
@@ -62,7 +61,7 @@ const Header = () => {
           <Link href="/apps" className='flex items-center mr-4'>
             <LogoSite className='object-contain' />
           </Link>
-          
+
         </>}
       </div>
       {isMobile && (
@@ -70,11 +69,12 @@ const Header = () => {
           <Link href="/apps" className='flex items-center mr-4'>
             <LogoSite />
           </Link>
-         
+
         </div>
       )}
       {!isMobile && (
         <div className='flex items-center'>
+          {!isCurrentWorkspaceDatasetOperator && <ChatNav className={navClassName} />}
           {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
           {!isCurrentWorkspaceDatasetOperator && <AppNav />}
           {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}
@@ -95,6 +95,7 @@ const Header = () => {
       </div>
       {(isMobile && isShowNavMenu) && (
         <div className='w-full flex flex-col p-2 gap-y-1'>
+          {!isCurrentWorkspaceDatasetOperator && <ChatNav className={navClassName} />}
           {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
           {!isCurrentWorkspaceDatasetOperator && <AppNav />}
           {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}

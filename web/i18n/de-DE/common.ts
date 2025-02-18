@@ -134,6 +134,7 @@ const translation = {
     newApp: 'Neue App',
     newDataset: 'Wissen erstellen',
     tools: 'Werkzeuge',
+    chat: 'Chat',
   },
   userProfile: {
     settings: 'Einstellungen',

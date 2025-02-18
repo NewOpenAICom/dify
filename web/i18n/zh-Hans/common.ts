@@ -129,7 +129,7 @@ const translation = {
   },
   menus: {
     status: 'beta',
-    explore: '探索',
+    explore: 'App',
     apps: '工作室',
     plugins: '插件',
     pluginsTips: '集成第三方插件或创建与 ChatGPT 兼容的 AI 插件。',
@@ -138,6 +138,7 @@ const translation = {
     newApp: '创建应用',
     newDataset: '创建知识库',
     tools: '工具',
+    chat: 'Chat',
   },
   userProfile: {
     settings: '设置',
@@ -167,7 +168,7 @@ const translation = {
   account: {
     account: '账户',
     myAccount: '我的账户',
-    studio: 'AIPs 工作室',
+    studio: 'New OpenAI 工作室',
     avatar: '头像',
     name: '用户名',
     email: '邮箱',
@@ -179,8 +180,8 @@ const translation = {
     newPassword: '新密码',
     notEqual: '两个密码不相同',
     confirmPassword: '确认密码',
-    langGeniusAccount: 'AIPs 账号',
-    langGeniusAccountTip: '您的 AIPs 账号和相关的用户数据。',
+    langGeniusAccount: 'New OpenAI 账号',
+    langGeniusAccountTip: '您的 New OpenAI 账号和相关的用户数据。',
     editName: '编辑名字',
     showAppLength: '显示 {{length}} 个应用',
     delete: '删除账户',
@@ -223,7 +224,7 @@ const translation = {
     sendInvite: '发送邀请',
     invitedAsRole: '邀请为{{role}}用户',
     invitationSent: '邀请已发送',
-    invitationSentTip: '邀请已发送，对方登录 Dify 后即可访问你的团队数据。',
+    invitationSentTip: '邀请已发送，对方登录 New OpenAI 后即可访问你的团队数据。',
     invitationLink: '邀请链接',
     failedInvitationEmails: '邀请以下邮箱失败',
     ok: '好的',
@@ -274,7 +275,7 @@ const translation = {
       openaiHosted: '托管 OpenAI',
       onTrial: '体验',
       exhausted: '超出限额',
-      desc: '托管 OpenAI 由 Dify 提供的托管 OpenAI 服务，你可以使用 GPT-3.5 等模型，在体验额度消耗完毕前你需要设置其它模型供应商。',
+      desc: '托管 OpenAI 由 New OpenAI 提供的托管 OpenAI 服务，你可以使用 GPT-3.5 等模型，在体验额度消耗完毕前你需要设置其它模型供应商。',
       callTimes: '调用次数',
       usedUp: '试用额度已用完，请在下方添加自己的模型供应商',
       useYourModel: '当前正在使用你自己的模型供应商。',
@@ -441,9 +442,9 @@ const translation = {
     },
   },
   apiBasedExtension: {
-    title: 'API 扩展提供了一个集中式的 API 管理，在此统一添加 API 配置后，方便在 Dify 上的各类应用中直接使用。',
+    title: 'API 扩展提供了一个集中式的 API 管理，在此统一添加 API 配置后，方便在 New OpenAI 上的各类应用中直接使用。',
     link: '了解如何开发您自己的 API 扩展。',
-    linkUrl: 'https://docs.dify.ai/v/zh-hans/guides/extension/api-based-extension',
+    linkUrl: 'https://docs.New OpenAI.ai/v/zh-hans/guides/extension/api-based-extension',
     add: '新增 API 扩展',
     selector: {
       title: 'API 扩展',
@@ -472,8 +473,8 @@ const translation = {
   about: {
     changeLog: '更新日志',
     updateNow: '现在更新',
-    nowAvailable: 'Dify {{version}} 现已可用。',
-    latestAvailable: 'Dify {{version}} 已是最新版本。',
+    nowAvailable: 'New OpenAI {{version}} 现已可用。',
+    latestAvailable: 'New OpenAI {{version}} 已是最新版本。',
   },
   appMenus: {
     overview: '监测',
