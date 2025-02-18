@@ -211,6 +211,9 @@ services:
       SSRF_PROXY_HTTPS_URL: 'http://ssrf_proxy:3128'
       # Indexing configuration
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: 4000
+      ALLOW_CREATE_WORKSPACE: true
+      ENABLE_SOCIAL_OAUTH_LOGIN: true
+      
     depends_on:
       - db
       - redis
@@ -385,6 +388,7 @@ services:
       # Indexing configuration
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: 1000
       CREATE_TIDB_SERVICE_JOB_ENABLED: false
+      ALLOW_CREATE_WORKSPACE: true
     depends_on:
       - db
       - redis

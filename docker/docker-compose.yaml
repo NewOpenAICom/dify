@@ -389,11 +389,18 @@ x-shared-env: &shared-api-worker-env
   CREATE_TIDB_SERVICE_JOB_ENABLED: ${CREATE_TIDB_SERVICE_JOB_ENABLED:-false}
   MAX_SUBMIT_COUNT: ${MAX_SUBMIT_COUNT:-100}
   TOP_K_MAX_VALUE: ${TOP_K_MAX_VALUE:-10}
+  ALLOW_CREATE_WORKSPACE: ${ALLOW_CREATE_WORKSPACE:-true}
+  ALLOW_REGISTER: ${ALLOW_REGISTER:-true}
+  ENABLE_EMAIL_PASSWORD_LOGIN: ${ENABLE_EMAIL_PASSWORD_LOGIN:-true}
+  ENABLE_SOCIAL_OAUTH_LOGIN: ${ENABLE_SOCIAL_OAUTH_LOGIN:-true}
+  ENABLE_EMAIL_CODE_LOGIN: ${ENABLE_EMAIL_CODE_LOGIN:-true}
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
 
 services:
   # API service
   api:
-    image: dihubcn/dify-api:v1.0.0
+    image: dihubcn/dify-api:v1.0.2
     restart: always
     environment:
       # Use the shared environment variables.
@@ -418,7 +425,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: dihubcn/dify-api:v1.0.0
+    image: dihubcn/dify-api:v1.0.2
     restart: always
     environment:
       # Use the shared environment variables.
@@ -442,7 +449,7 @@ services:
 
   # Frontend web application.
   web:
-    image: dihubcn/dify-web:v1.0.4
+    image: dihubcn/dify-web:v1.0.5
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
