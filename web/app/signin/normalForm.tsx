@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { RiContractLine, RiDoorLockLine, RiErrorWarningFill } from '@remixicon/react'
 import Loading from '../components/base/loading'
@@ -12,7 +11,6 @@ import cn from '@/utils/classnames'
 import { getSystemFeatures, invitationCheck } from '@/service/common'
 import { LicenseStatus, defaultSystemFeatures } from '@/types/feature'
 import Toast from '@/app/components/base/toast'
-import { IS_CE_EDITION } from '@/config'
 
 const NormalForm = () => {
   const { t } = useTranslation()
@@ -184,7 +182,7 @@ const NormalForm = () => {
               </div>
             </div>
           </>}
-          <div className="w-full block mt-2 system-xs-regular text-text-tertiary">
+          {/* <div className="w-full block mt-2 system-xs-regular text-text-tertiary">
             {t('login.tosDesc')}
             &nbsp;
             <Link
@@ -198,15 +196,15 @@ const NormalForm = () => {
               target='_blank' rel='noopener noreferrer'
               href='https://dify.ai/privacy'
             >{t('login.pp')}</Link>
-          </div>
-          {IS_CE_EDITION && <div className="w-hull block mt-2 system-xs-regular text-text-tertiary">
+          </div> */}
+          {/* {IS_CE_EDITION && <div className="w-hull block mt-2 system-xs-regular text-text-tertiary">
             {t('login.goToInit')}
             &nbsp;
             <Link
               className='system-xs-medium text-text-secondary hover:underline'
               href='/install'
             >{t('login.setAdminAccount')}</Link>
-          </div>}
+          </div>} */}
 
         </div>
       </div>
