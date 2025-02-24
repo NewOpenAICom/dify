@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
 # get the list of modified files
 files=$(git diff --cached --name-only)
 

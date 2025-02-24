@@ -10,6 +10,7 @@ import DatasetNav from './dataset-nav'
 import EnvNav from './env-nav'
 import PluginsNav from './plugins-nav'
 import ExploreNav from './explore-nav'
+import ChatNav from './chat-nav'
 import ToolsNav from './tools-nav'
 import { WorkspaceProvider } from '@/context/workspace-context'
 import { useAppContext } from '@/context/app-context'
@@ -18,9 +19,11 @@ import WorkplaceSelector from '@/app/components/header/account-dropdown/workplac
 import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import { useProviderContext } from '@/context/provider-context'
 import { useModalContext } from '@/context/modal-context'
+
 import LicenseNav from './license-env'
 import PlanBadge from './plan-badge'
 import { Plan } from '../billing/type'
+
 
 const navClassName = `
   flex items-center relative mr-0 sm:mr-3 px-3 h-8 rounded-xl
@@ -85,6 +88,7 @@ const Header = () => {
       {
         !isMobile && (
           <div className='flex items-center'>
+            {!isCurrentWorkspaceDatasetOperator && <ChatNav className={navClassName} />}
             {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
             {!isCurrentWorkspaceDatasetOperator && <AppNav />}
             {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}
@@ -102,6 +106,7 @@ const Header = () => {
       {
         (isMobile && isShowNavMenu) && (
           <div className='w-full flex flex-col p-2 gap-y-1'>
+            {!isCurrentWorkspaceDatasetOperator && <ChatNav className={navClassName} />}
             {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
             {!isCurrentWorkspaceDatasetOperator && <AppNav />}
             {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}

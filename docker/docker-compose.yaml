@@ -410,11 +410,18 @@ x-shared-env: &shared-api-worker-env
   MARKETPLACE_ENABLED: ${MARKETPLACE_ENABLED:-true}
   MARKETPLACE_API_URL: ${MARKETPLACE_API_URL:-https://marketplace.dify.ai}
   FORCE_VERIFYING_SIGNATURE: ${FORCE_VERIFYING_SIGNATURE:-true}
+  ALLOW_CREATE_WORKSPACE: ${ALLOW_CREATE_WORKSPACE:-true}
+  ALLOW_REGISTER: ${ALLOW_REGISTER:-true}
+  ENABLE_EMAIL_PASSWORD_LOGIN: ${ENABLE_EMAIL_PASSWORD_LOGIN:-true}
+  ENABLE_SOCIAL_OAUTH_LOGIN: ${ENABLE_SOCIAL_OAUTH_LOGIN:-true}
+  ENABLE_EMAIL_CODE_LOGIN: ${ENABLE_EMAIL_CODE_LOGIN:-true}
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
 
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.15.3
+    image: dihubcn/dify-api:v1.0.3
     restart: always
     environment:
       # Use the shared environment variables.
@@ -435,11 +442,13 @@ services:
     networks:
       - ssrf_proxy_network
       - default
+    ports:
+      - "5001:5001"
 
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.15.3
+    image: dihubcn/dify-api:v1.0.3
     restart: always
     environment:
       # Use the shared environment variables.
@@ -460,10 +469,12 @@ services:
     networks:
       - ssrf_proxy_network
       - default
+    ports:
+      - "5002:5001"
 
   # Frontend web application.
   web:
-    image: langgenius/dify-web:0.15.3
+    image: dihubcn/dify-web:v1.0.9
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
@@ -477,6 +488,9 @@ services:
       TOP_K_MAX_VALUE: ${TOP_K_MAX_VALUE:-}
       INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH: ${INDEXING_MAX_SEGMENTATION_TOKENS_LENGTH:-}
       PM2_INSTANCES: ${PM2_INSTANCES:-2}
+    ports:
+      - "3000:3000"
+
 
   # The postgres database.
   db:
@@ -502,6 +516,7 @@ services:
       retries: 30
     ports:
       - '${EXPOSE_DB_PORT:-5432}:5432'
+
 
   # The redis cache.
   redis:

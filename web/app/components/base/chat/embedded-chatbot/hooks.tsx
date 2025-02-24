@@ -16,7 +16,6 @@ import type {
 } from '../types'
 import { CONVERSATION_ID_INFO } from '../constants'
 import { buildChatItemTree, getProcessedInputsFromUrlParams } from '../utils'
-import { getProcessedFilesFromResponse } from '../../file-uploader/utils'
 import {
   fetchAppInfo,
   fetchAppMeta,
@@ -35,6 +34,8 @@ import { changeLanguage } from '@/i18n/i18next-config'
 import { InputVarType } from '@/app/components/workflow/types'
 import { TransferMethod } from '@/types/app'
 import { addFileInfos, sortAgentSorts } from '@/app/components/tools/utils'
+import { getProcessedFilesFromResponse } from '@/app/components/base/file-uploader/utils'
+
 
 function getFormattedChatList(messages: any[]) {
   const newChatList: ChatItem[] = []

@@ -141,6 +141,7 @@ const translation = {
     newDataset: 'Wissen erstellen',
     tools: 'Werkzeuge',
     exploreMarketplace: 'Marketplace erkunden',
+    chat: 'Chat',
   },
   userProfile: {
     settings: 'Einstellungen',

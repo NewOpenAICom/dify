@@ -135,7 +135,7 @@ const translation = {
   },
   menus: {
     status: 'beta',
-    explore: 'Explore',
+    explore: 'App',
     apps: 'Studio',
     plugins: 'Plugins',
     exploreMarketplace: 'Explore Marketplace',
@@ -145,6 +145,7 @@ const translation = {
     newApp: 'New App',
     newDataset: 'Create Knowledge',
     tools: 'Tools',
+    chat: 'Chat',
   },
   userProfile: {
     settings: 'Settings',
@@ -175,7 +176,7 @@ const translation = {
   account: {
     account: 'Account',
     myAccount: 'My Account',
-    studio: 'Dify Studio',
+    studio: 'New OpenAI Studio',
     avatar: 'Avatar',
     name: 'Name',
     email: 'Email',
@@ -187,8 +188,8 @@ const translation = {
     newPassword: 'New password',
     confirmPassword: 'Confirm password',
     notEqual: 'Two passwords are different.',
-    langGeniusAccount: 'Dify account',
-    langGeniusAccountTip: 'Your Dify account and associated user data.',
+    langGeniusAccount: 'New OpenAI account',
+    langGeniusAccountTip: 'Your New OpenAI account and associated user data.',
     editName: 'Edit Name',
     showAppLength: 'Show {{length}} apps',
     delete: 'Delete Account',
@@ -233,7 +234,7 @@ const translation = {
     sendInvite: 'Send Invite',
     invitedAsRole: 'Invited as {{role}} user',
     invitationSent: 'Invitation sent',
-    invitationSentTip: 'Invitation sent, and they can sign in to Dify to access your team data.',
+    invitationSentTip: 'Invitation sent, and they can sign in to New OpenAI to access your team data.',
     invitationLink: 'Invitation Link',
     failedInvitationEmails: 'Below users were not invited successfully',
     ok: 'OK',
@@ -282,7 +283,7 @@ const translation = {
       openaiHosted: 'Hosted OpenAI',
       onTrial: 'ON TRIAL',
       exhausted: 'QUOTA EXHAUSTED',
-      desc: 'The OpenAI hosting service provided by Dify allows you to use models such as GPT-3.5. Before your trial quota is used up, you need to set up other model providers.',
+      desc: 'The OpenAI hosting service provided by New OpenAI allows you to use models such as GPT-3.5. Before your trial quota is used up, you need to set up other model providers.',
       callTimes: 'Call times',
       usedUp: 'Trial quota used up. Add own Model Provider.',
       useYourModel: 'Currently using own Model Provider.',
@@ -456,9 +457,9 @@ const translation = {
     },
   },
   apiBasedExtension: {
-    title: 'API extensions provide centralized API management, simplifying configuration for easy use across Dify\'s applications.',
+    title: 'API extensions provide centralized API management, simplifying configuration for easy use across New OpenAI\'s applications.',
     link: 'Learn how to develop your own API Extension.',
-    linkUrl: 'https://docs.dify.ai/features/extension/api_based_extension',
+    linkUrl: 'https://docs.New OpenAI.ai/features/extension/api_based_extension',
     add: 'Add API Extension',
     selector: {
       title: 'API Extension',
@@ -487,8 +488,8 @@ const translation = {
   about: {
     changeLog: 'Changelog',
     updateNow: 'Update now',
-    nowAvailable: 'Dify {{version}} is now available.',
-    latestAvailable: 'Dify {{version}} is the latest version available.',
+    nowAvailable: 'New OpenAI {{version}} is now available.',
+    latestAvailable: 'New OpenAI {{version}} is the latest version available.',
   },
   appMenus: {
     overview: 'Monitoring',
