@@ -175,7 +175,7 @@ const translation = {
     sortBy: 'Schwarze Stadt',
     discover: 'Entdecken',
     noPluginFound: 'Kein Plugin gefunden',
-    difyMarketplace: 'Dify Marktplatz',
+    difyMarketplace: 'New OpenAI Marktplatz',
     moreFrom: 'Mehr aus dem Marketplace',
     pluginsResult: '{{num}} Ergebnisse',
     empower: 'Unterstützen Sie Ihre KI-Entwicklung',
