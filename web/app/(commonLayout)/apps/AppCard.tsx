@@ -233,9 +233,9 @@ const AppCard = ({ app, onRefresh }: AppCardProps) => {
         <button className={s.actionItem} onClick={onClickDuplicate}>
           <span className={s.actionName}>{t('app.duplicate')}</span>
         </button>
-        <button className={s.actionItem} onClick={onClickExport}>
+        {/* <button className={s.actionItem} onClick={onClickExport}>
           <span className={s.actionName}>{t('app.export')}</span>
-        </button>
+        </button> */}
         {(app.mode === 'completion' || app.mode === 'chat') && (
           <>
             <Divider className="!my-1" />

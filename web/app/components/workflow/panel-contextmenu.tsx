@@ -110,12 +110,12 @@ const PanelContextmenu = () => {
       </div>
       <Divider className='m-0' />
       <div className='p-1'>
-        <div
+        {/* <div
           className='flex items-center justify-between px-3 h-8 text-sm text-text-secondary rounded-lg cursor-pointer hover:bg-state-base-hover'
           onClick={() => exportCheck()}
         >
           {t('app.export')}
-        </div>
+        </div> */}
         <div
           className='flex items-center justify-between px-3 h-8 text-sm text-text-secondary rounded-lg cursor-pointer hover:bg-state-base-hover'
           onClick={() => setShowImportDSLModal(true)}

@@ -358,10 +358,10 @@ const AppInfo = ({ expand }: IAppInfoProps) => {
                   </div>
                 </>
               )}
-              <Divider className="!my-1" />
+              {/* <Divider className="!my-1" />
               <div className='h-9 py-2 px-3 mx-1 flex items-center hover:bg-gray-50 rounded-lg cursor-pointer' onClick={exportCheck}>
                 <span className='text-gray-700 text-sm leading-5'>{t('app.export')}</span>
-              </div>
+              </div> */}
               {
                 (appDetail.mode === 'advanced-chat' || appDetail.mode === 'workflow') && (
                   <div
