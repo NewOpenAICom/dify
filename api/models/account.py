@@ -35,6 +35,7 @@ class Account(UserMixin, db.Model):  # type: ignore[name-defined]
     last_active_at = db.Column(db.DateTime, nullable=False, server_default=func.current_timestamp())
     status = db.Column(db.String(16), nullable=False, server_default=db.text("'active'::character varying"))
     initialized_at = db.Column(db.DateTime)
+    spread_code = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, server_default=func.current_timestamp())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=func.current_timestamp())
 

@@ -2,6 +2,9 @@ import logging
 from datetime import UTC, datetime
 from typing import Optional
 
+import string
+import random
+
 import requests
 from flask import current_app, redirect, request
 from flask_restful import Resource  # type: ignore
@@ -158,9 +161,10 @@ def _generate_account(provider: str, user_info: OAuthUserInfo):
     if not account:
         if not FeatureService.get_system_features().is_allow_register:
             raise AccountNotFoundError()
+        spread_code = AccountService._generate_spread_code()
         account_name = user_info.name or user_info.email
         account = RegisterService.register(
-            email=user_info.email, name=account_name, password=None, open_id=user_info.id, provider=provider
+            email=user_info.email, name=account_name, password=None, open_id=user_info.id, provider=provider, spread_code=spread_code
         )
 
         # Set interface language

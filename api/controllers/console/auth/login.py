@@ -206,8 +206,9 @@ class EmailCodeLoginApi(Resource):
 
         if account is None:
             try:
+                spread_code = AccountService._generate_spread_code()
                 account = AccountService.create_account_and_tenant(
-                    email=user_email, name=user_email, interface_language=languages[0]
+                    email=user_email, name=user_email, interface_language=languages[0], spread_code=spread_code
                 )
             except WorkSpaceNotAllowedCreateError:
                 return NotAllowedCreateWorkspace()

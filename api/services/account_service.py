@@ -8,6 +8,9 @@ from datetime import UTC, datetime, timedelta
 from hashlib import sha256
 from typing import Any, Optional, cast
 
+import string
+import random
+
 from pydantic import BaseModel
 from sqlalchemy import func
 from werkzeug.exceptions import Unauthorized
@@ -201,8 +204,9 @@ class AccountService:
         password: Optional[str] = None,
         interface_theme: str = "light",
         is_setup: Optional[bool] = False,
+        spread_code: Optional[str] = None,
     ) -> Account:
-        """create account"""
+        """create account""" 
         if not FeatureService.get_system_features().is_allow_register and not is_setup:
             from controllers.console.error import AccountNotFound
 
@@ -219,6 +223,7 @@ class AccountService:
         account = Account()
         account.email = email
         account.name = name
+        account.spread_code = spread_code
 
         if password:
             # generate password salt
@@ -244,11 +249,11 @@ class AccountService:
 
     @staticmethod
     def create_account_and_tenant(
-        email: str, name: str, interface_language: str, password: Optional[str] = None
+        email: str, name: str, interface_language: str, password: Optional[str] = None, spread_code: Optional[str] = None
     ) -> Account:
         """create account"""
         account = AccountService.create_account(
-            email=email, name=name, interface_language=interface_language, password=password
+            email=email, name=name, interface_language=interface_language, password=password, spread_code=spread_code
         )
 
         TenantService.create_owner_tenant_if_not_exist(account=account)
@@ -317,6 +322,11 @@ class AccountService:
         except Exception as e:
             logging.exception(f"Failed to link {provider} account {open_id} to Account {account.id}")
             raise LinkAccountIntegrateError("Failed to link account.") from e
+    
+    @staticmethod
+    def get_spread_codes_by_code(spread_code: str):
+        account = Account.query.filter_by(spread_code=spread_code)
+        return account is not None
 
     @staticmethod
     def close_account(account: Account) -> None:
@@ -542,6 +552,23 @@ class AccountService:
         redis_client.expire(minute_key, 60)
 
         return False
+    
+    @staticmethod
+    def _generate_spread_code():
+        # 生成六位数邀请码
+        while True:
+            code = ''.join([
+                random.choice(string.ascii_letters + string.digits)
+                for _ in range(6)
+            ])
+            
+            # 检查是否存在重复邀请码
+            if not AccountService.get_spread_codes_by_code(code):
+                return code
+            else:
+                continue
+            
+        return code
 
 
 def _get_login_cache_key(*, account_id: str, token: str):
@@ -820,12 +847,14 @@ class RegisterService:
         """
         try:
             # Register
+            spread_code = AccountService._generate_spread_code()
             account = AccountService.create_account(
                 email=email,
                 name=name,
                 interface_language=languages[0],
                 password=password,
                 is_setup=True,
+                spread_code=spread_code
             )
 
             account.last_login_ip = ip_address
@@ -858,6 +887,7 @@ class RegisterService:
         status: Optional[AccountStatus] = None,
         is_setup: Optional[bool] = False,
         create_workspace_required: Optional[bool] = True,
+        spread_code: Optional[str] = None,
     ) -> Account:
         db.session.begin_nested()
         """Register account"""
@@ -868,6 +898,7 @@ class RegisterService:
                 interface_language=language or languages[0],
                 password=password,
                 is_setup=is_setup,
+                spread_code=spread_code
             )
             account.status = AccountStatus.ACTIVE.value if not status else status.value
             account.initialized_at = datetime.now(UTC).replace(tzinfo=None)
@@ -1027,6 +1058,7 @@ class RegisterService:
 
             invitation: dict = json.loads(data)
             return invitation
+        
 
 
 def _generate_refresh_token(length: int = 64):

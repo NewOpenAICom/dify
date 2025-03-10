@@ -117,11 +117,13 @@ class ForgotPasswordResetApi(Resource):
                 tenant_was_created.send(tenant)
         else:
             try:
+                spread_code = AccountService._generate_spread_code()
                 account = AccountService.create_account_and_tenant(
                     email=reset_data.get("email", ""),
                     name=reset_data.get("email", ""),
                     password=password_confirm,
                     interface_language=languages[0],
+                    spread_code=spread_code
                 )
             except WorkSpaceNotAllowedCreateError:
                 pass
